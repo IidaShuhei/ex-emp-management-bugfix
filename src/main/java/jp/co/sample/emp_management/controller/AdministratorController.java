@@ -70,9 +70,6 @@ public class AdministratorController {
 	@RequestMapping("/insert")
 	public String insert(@Validated InsertAdministratorForm form, BindingResult result, Model model) {
 		
-		String name = form.getName();
-		session.setAttribute("name", name);
-
 		String mailAddress1 = form.getMailAddress();
 		Administrator administrator2 = administratorService.findByMailAddress(mailAddress1);
 
@@ -120,6 +117,9 @@ public class AdministratorController {
 		if (administrator == null) {
 			model.addAttribute("errorMessage", "メールアドレスまたはパスワードが不正です。");
 			return toLogin();
+		}
+		if(administrator != null) {
+			session.setAttribute("name", administrator.getName());
 		}
 		return "forward:/employee/showList";
 		
