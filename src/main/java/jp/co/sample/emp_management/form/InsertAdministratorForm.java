@@ -16,10 +16,10 @@ public class InsertAdministratorForm {
 	private String name;
 	/** メールアドレス */
 	@Email(message="Eメールの形式が不正です")
-	@Size(min=1,max=127,message="Eメールは1文字以上127文字以内で記載してください")
+	@Size(min=1,max=127,message="Eメールは5文字以上127文字以内で記載してください")
 	private String mailAddress;
 	/** パスワード */
-	@Size(min=1,max=127,message="パスワードは1文字以上127文字以内で記載してください")
+	@Size(min=1,max=127,message="パスワードは5文字以上127文字以内で記載してください")
 	private String password;
 	
 	public String getName() {
