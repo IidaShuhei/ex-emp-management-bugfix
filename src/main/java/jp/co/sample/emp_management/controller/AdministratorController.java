@@ -70,10 +70,10 @@ public class AdministratorController {
 	@RequestMapping("/insert")
 	public String insert(@Validated InsertAdministratorForm form, BindingResult result, Model model) {
 		
-		String mailAddress1 = form.getMailAddress();
-		Administrator administrator2 = administratorService.findByMailAddress(mailAddress1);
+		String mailAddress = form.getMailAddress();
+		Administrator existAdministrator = administratorService.findByMailAddress(mailAddress);
 
-		if (administrator2 != null) {
+		if (existAdministrator != null) {
 			result.rejectValue("mailAddress", null, "そのメールアドレスはすでに登録されています");
 		}
 		if(!(form.getPassword()).equals(form.getConPassword())) {
